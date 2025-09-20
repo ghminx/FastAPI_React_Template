@@ -1,0 +1,30 @@
+├──backend
+│
+│  .env                  # 환경 변수 파일 (DB URL, SECRET_KEY 등) → 실제 서비스에선 Git에 올리지 않음
+│  .gitignore            # Git에 올리지 않을 파일/폴더 정의
+│  database.py           # 비동기 DB 세션/엔진 설정 (create_async_engine, session_maker 등)
+│  database_base.py      # Base = declarative_base() (모델들이 상속받는 기본 클래스)
+│  env_example.env       # .env 예시 파일 (Git에 공유용)
+│  main.py               # FastAPI 앱 진입점, 라우터 등록
+│
+├─core                   # 핵심 로직 (인증/유저 관리 등)
+│  │  auth.py            # JWT 인증 백엔드 설정 (AuthenticationBackend)
+│  │  user_db.py         # get_user_db 정의 (User DB 종속성 주입)
+│  │  user_manager.py    # UserManager (회원가입 후 처리, 비밀번호 관리, 토큰 관리 등)
+│
+├─crud                   # (Create, Read, Update, Delete) DB 조작 함수 모음 (아직 빈 상태)
+│
+├─models                 # SQLAlchemy ORM 모델 정의
+│  │  user.py            # 실제 User 모델 (SQLAlchemy + fastapi-users 확장)
+│  │  user_base.py       # Base 모델만 정의 (declarative_base())
+
+│
+├─routers                # FastAPI 라우터 모음 (추가 기능들: 게시판, 댓글 등 예정)
+│
+├─schemas                # Pydantic 스키마 (Request/Response 검증)
+│  │  user.py            # UserRead, UserCreate, UserUpdate 등 정의
+
+│
+├─utils                  # 유틸 함수 모음 (JWT 헬퍼, 이메일 전송, 공용 함수 등)
+│
+
